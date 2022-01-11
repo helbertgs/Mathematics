@@ -1,11 +1,11 @@
 import XCTest
-@testable import Mathematics
+@testable import Math
 
-final class MathematicsTests: XCTestCase {
+final class MathTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(Mathematics().text, "Hello, World!")
+        XCTAssertEqual(Math().text, "Hello, World!")
     }
 }
