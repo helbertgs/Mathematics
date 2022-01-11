@@ -13,8 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    # - name: Xcode Porject
+    #   run: swift package generate-xcodeproj
     - name: Build
-      run: set -o pipefail && xcodebuild clean -scheme $SCHEME -destination $DESTINATION -derivedDataPath $DERIVED_DATA_PATH build-for-testing
+      run: swift build --generate-xcodeproj -v
     - name: Run tests
-      run: set -o pipefail && xcodebuild test-without-building -xctestrun $(find . -type f -name "*.xctestrun") -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH -enableCodeCoverage YES
-
+      run: swift test --generate-xcodeproj -v
