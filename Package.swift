@@ -3,20 +3,25 @@
 
 import PackageDescription
 
+let excludedFilenames = ["README.md"]
+
 let package = Package(
-    name: "Mathematics",
+    name: "swift-math",
     products: [
-        .library(
-            name: "Mathematics",
-            targets: ["Mathematics"]),
+        .library(name: "Math", targets: ["Math"]),
     ],
     dependencies: [ ],
     targets: [
         .target(
-            name: "Mathematics",
-            dependencies: []),
+            name: "Math",
+            dependencies: [],
+            exclude: excludedFilenames
+        ),
+
         .testTarget(
-            name: "MathematicsTests",
-            dependencies: ["Mathematics"]),
+            name: "MathTests",
+            dependencies: ["Math"],
+            exclude: excludedFilenames
+        ),
     ]
 )
