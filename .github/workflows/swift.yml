@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: sudo swift build -v
+      run: sudo swift build
     - name: Run tests
-      run: sudo swift test -v
+      run: sudo swift test
