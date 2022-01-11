@@ -13,9 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Force xcode 12.5.1
-      run: sudo xcode-select -switch /Applications/Xcode_12.5.1.app
     - name: Build
-      run: swift build -v
+      run: set -o pipefail && xcodebuild clean -scheme $SCHEME -destination $DESTINATION -derivedDataPath $DERIVED_DATA_PATH build-for-testing
     - name: Run tests
-      run: swift test -v
+      run: set -o pipefail && xcodebuild test-without-building -xctestrun $(find . -type f -name "*.xctestrun") -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath $DERIVED_DATA_PATH -enableCodeCoverage YES
+
