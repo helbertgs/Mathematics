@@ -2,11 +2,6 @@
 <img src="./.github/logo.png" alt="drawing" style="width:400px; text-align: center;"/>
 </p>
 
-![Swift Package Manager](https://badgen.net/badge/Swift%20Package/5.5/orange) 
-![OS](https://badgen.net/badge/platforms/iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux%20%7C%20Windows/black)
-[![Swift](https://github.com/helbertgs/swift-math/actions/workflows/swift.yml/badge.svg)](https://github.com/helbertgs/swift-math/actions/workflows/swift.yml)
-[![Build Status](https://app.bitrise.io/app/d44fb074346957be/status.svg?token=117HaHYOgEFESP4kn9-54A)](https://app.bitrise.io/app/d44fb074346957be)
-
 ## Introduction
 
 Swift Math contains a lot of mathematic functions based on C for Graphics (NVidia)
@@ -69,4 +64,13 @@ Swift Math uses GitHub issues to track bugs and features. We use pull requests f
 
 1. [`Math`](Sources/Math/README.md)
 
-## Future expansion
+## Reference(s).
+1. [`C for Graphics`](https://developer.download.nvidia.com/cg/index_stdlib.html)
+2. [`Mathematics`](https://math.stackexchange.com/)
+
+---
+
+![Swift Package Manager](https://badgen.net/badge/Swift%20Package/5.5/orange) 
+![OS](https://badgen.net/badge/platforms/iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux%20%7C%20Windows/black)
+[![Swift](https://github.com/helbertgs/swift-math/actions/workflows/swift.yml/badge.svg)](https://github.com/helbertgs/swift-math/actions/workflows/swift.yml)
+[![Build Status](https://app.bitrise.io/app/d44fb074346957be/status.svg?token=117HaHYOgEFESP4kn9-54A)](https://app.bitrise.io/app/d44fb074346957be)
