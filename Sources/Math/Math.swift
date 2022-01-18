@@ -1,5 +1,31 @@
 import Swift
 
+@usableFromInline
+typealias Byte = UInt32
+
+@inline(__always)
+@usableFromInline
+func __memory<T>(_ value: T) -> [Byte] where T: SignedNumeric & Comparable {
+    var value = abs(value)
+    return withUnsafePointer(to: &value) {
+        $0.withMemoryRebound(to: Byte.self, capacity: MemoryLayout<T>.size) {
+            Array(UnsafeBufferPointer(start: $0, count: MemoryLayout<T>.size))
+        }
+    }
+}
+
+@inline(__always)
+@usableFromInline
+func __hi<T>(_ value: T) -> Int where T: SignedNumeric & Comparable {
+    Int(__memory(abs(value))[1])
+}
+
+@inline(__always)
+@usableFromInline
+func __lo<T>(_ value: T) -> Int where T: SignedNumeric & Comparable {
+    Int(__memory(value)[0])
+}
+
 /// For vectors, the returned vector contains the absolute value of each element of the input vector.
 /// - Parameter a: Vector or scalar of which to determine the absolute value.
 /// - Returns: Returns absolute value of scalars and vectors.
@@ -12,26 +38,6 @@ import Swift
 /// - Returns: Returns absolute value of scalars and vectors.
 @inlinable public func abs(_ a: Vector) -> Vector {
     .init(x: abs(a.x), y: abs(a.y), z: abs(a.z))
-}
-
-/// Returns arccosine of a in the range [0, Double.pi], expecting a to be in the range [-1, 1].
-/// For vectors, the returned vector contains the arccosine of each element of the input vector. 
-/// - Parameter a: Vector or scalar of which to determine the arccosine.
-/// - Returns: arccosine of scalars and vectors.
-@inlinable public func arccos(_ a: Double) -> Double {
-    let n = a < 0 ? 1.0 : 0.0
-    let x = abs(a)
-    var r = -0.0187293
-    r = r * x
-    r += 0.0742610
-    r = r * x
-    r = r - 0.2121144
-    r = r * x
-    r = r + 1.5707288
-    r = r * (1.0 - x).squareRoot()
-    r = r - (2.0 * n * r)
-
-    return n * Double.pi + r
 }
 
 @inlinable public func arcsin(_ x: Double) -> Double {
