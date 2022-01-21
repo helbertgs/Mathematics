@@ -1,8 +1,5 @@
-//
-//  File.swift
-//  
-//
-//  Created by Helbert Gomes on 18/01/22.
-//
+import Swift
 
-import Foundation
+@inlinable public func sqrt(_ number: Double) -> Double {
+    number.squareRoot()
+}
